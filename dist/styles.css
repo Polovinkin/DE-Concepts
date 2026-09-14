@@ -4,9 +4,8 @@
   --muted: #5f5544;
   --line: #ddc98b;
   --accent: #2f69de;
-  --yellow: #f3b716;
-  --pink: #cc6670;
-  --green: #519076;
+  --cover-blue: #4596ef;
+  --cover-yellow: #f5b348;
   --max: 1080px;
 }
 
@@ -76,13 +75,13 @@ header {
   box-sizing: border-box;
 }
 
-.brand-square { background: var(--green); border: 0; }
+.brand-square { background: var(--cover-yellow); border: 0; }
 .brand-circle { background: transparent; border-radius: 50%; }
 .brand-triangle {
   width: 0;
   height: 0;
   border-right: 6px solid transparent;
-  border-bottom: 11px solid var(--pink);
+  border-bottom: 11px solid var(--cover-blue);
   border-left: 6px solid transparent;
 }
 
@@ -133,7 +132,7 @@ h1 {
 }
 
 h1 em {
-  color: var(--pink);
+  color: var(--cover-blue);
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 400;
 }
