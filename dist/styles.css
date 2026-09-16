@@ -97,7 +97,7 @@ footer a:hover, footer a:focus-visible { color: var(--accent); }
   padding: 32px 0;
   display: grid;
   grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-  gap: clamp(40px, 6vw, 78px);
+  gap: clamp(20px, 3vw, 39px);
   align-items: center;
   border-bottom: 1px solid var(--line);
 }
@@ -316,6 +316,10 @@ h1 em {
 }
 
 .episode-duration {
+  align-self: flex-start;
+  padding: 2px 7px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
   color: var(--muted);
   font-size: 0.68rem;
   line-height: 1.3;
