@@ -1,8 +1,27 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const episodesList = document.getElementById("episodes-list");
+const rssFeedButton = document.getElementById("copy-rss-feed");
 const podcastFeedUrl = "https://anchor.fm/s/116db53dc/podcast/rss";
 const podcastPageUrl = "https://podcasters.spotify.com/pod/show/polovinkin";
+
+async function copyRssFeedUrl() {
+  try {
+    await navigator.clipboard.writeText(podcastFeedUrl);
+    rssFeedButton.classList.add("is-copied");
+    rssFeedButton.setAttribute("aria-label", "RSS feed URL copied");
+
+    window.setTimeout(() => {
+      rssFeedButton.classList.remove("is-copied");
+      rssFeedButton.setAttribute("aria-label", "Copy RSS feed URL");
+    }, 1800);
+  } catch (error) {
+    console.error("Could not copy RSS feed URL:", error);
+    window.prompt("Copy this RSS feed URL:", podcastFeedUrl);
+  }
+}
+
+rssFeedButton.addEventListener("click", copyRssFeedUrl);
 
 function getElementText(parent, tagName) {
   return parent.getElementsByTagName(tagName)[0]?.textContent.trim() ?? "";
