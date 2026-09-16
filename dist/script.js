@@ -1,5 +1,31 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const heroTitle = document.querySelector(".hero-copy h1");
+const mobileLayout = window.matchMedia("(max-width: 760px)");
+let heroTitleResizeFrame;
+
+function fitMobileHeroTitle() {
+  window.cancelAnimationFrame(heroTitleResizeFrame);
+  heroTitleResizeFrame = window.requestAnimationFrame(() => {
+    if (!mobileLayout.matches) {
+      heroTitle.style.removeProperty("font-size");
+      return;
+    }
+
+    heroTitle.style.fontSize = "100px";
+
+    const availableWidth = heroTitle.clientWidth - 1;
+    const requiredWidth = heroTitle.scrollWidth;
+    const fittedFontSize = Math.floor((availableWidth / requiredWidth) * 10000) / 100;
+
+    heroTitle.style.fontSize = `${fittedFontSize}px`;
+  });
+}
+
+fitMobileHeroTitle();
+window.addEventListener("resize", fitMobileHeroTitle);
+document.fonts?.ready.then(fitMobileHeroTitle);
+
 const episodesList = document.getElementById("episodes-list");
 const rssFeedButton = document.getElementById("copy-rss-feed");
 const podcastFeedUrl = "https://anchor.fm/s/116db53dc/podcast/rss";
