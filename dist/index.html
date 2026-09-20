@@ -7,15 +7,109 @@
       name="description"
       content="Data Engineering Concepts is an educational podcast about databases, pipelines, tools, and frameworks — explained clearly for listening on the go."
     />
+    <meta name="author" content="Dmitrii Polovinkin" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
     <meta name="theme-color" content="#fff7df" />
-    <title>Data Engineering Concepts Podcast</title>
+    <title>Data Engineering Concepts — Educational Podcast</title>
+    <link rel="canonical" href="https://deconcepts.com/" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Data Engineering Concepts Podcast RSS feed"
+      href="https://anchor.fm/s/116db53dc/podcast/rss"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Data Engineering Concepts" />
+    <meta
+      property="og:title"
+      content="Data Engineering Concepts — Educational Podcast"
+    />
+    <meta
+      property="og:description"
+      content="Clear, practical explanations of databases, pipelines, tools, and frameworks for learning data engineering on the go."
+    />
+    <meta property="og:url" content="https://deconcepts.com/" />
+    <meta property="og:image" content="https://deconcepts.com/social-card.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta
+      property="og:image:alt"
+      content="Data Engineering Concepts podcast cover"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Data Engineering Concepts — Educational Podcast"
+    />
+    <meta
+      name="twitter:description"
+      content="Clear, practical explanations of databases, pipelines, tools, and frameworks for learning data engineering on the go."
+    />
+    <meta name="twitter:image" content="https://deconcepts.com/social-card.jpg" />
+    <meta
+      name="twitter:image:alt"
+      content="Data Engineering Concepts podcast cover"
+    />
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='1' y='23' width='18' height='18' fill='%23f5b348'/%3E%3Cpath d='M32 21L43 41H21Z' fill='%234596ef'/%3E%3Ccircle cx='53' cy='32' r='7.5' fill='none' stroke='%23111111' stroke-width='3'/%3E%3C/svg%3E"
+      href="favicon.svg"
     />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="favicon-192.png" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://deconcepts.com/#website",
+            "url": "https://deconcepts.com/",
+            "name": "Data Engineering Concepts",
+            "description": "An educational podcast about databases, pipelines, tools, and frameworks for learning data engineering on the go.",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://deconcepts.com/#author" },
+            "mainEntity": { "@id": "https://deconcepts.com/#podcast" }
+          },
+          {
+            "@type": "PodcastSeries",
+            "@id": "https://deconcepts.com/#podcast",
+            "url": "https://deconcepts.com/",
+            "name": "Data Engineering Concepts",
+            "description": "An educational podcast about the tools, technologies, and ideas that data engineers work with every day.",
+            "inLanguage": "en",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://deconcepts.com/Podcast_Pic.webp",
+              "width": 1254,
+              "height": 1254
+            },
+            "webFeed": "https://anchor.fm/s/116db53dc/podcast/rss",
+            "author": { "@id": "https://deconcepts.com/#author" },
+            "sameAs": [
+              "https://podcasts.apple.com/us/podcast/data-engineering-concepts/id6808897527",
+              "https://open.spotify.com/show/27ExB9mnzCWgOIs74cgUX7",
+              "https://www.youtube.com/@DEConceptsPodcast",
+              "https://music.amazon.com/podcasts/cd0a5a53-a0a9-44b3-9e11-7b5ceadb1a40/data-engineering-concepts"
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://deconcepts.com/#author",
+            "name": "Dmitrii Polovinkin",
+            "url": "https://deconcepts.com/#author",
+            "sameAs": "https://www.linkedin.com/in/dpolovinkin/"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -117,10 +211,10 @@
               alt="Listen on Amazon Music"
             />
           </a>
-          <button
-            type="button"
+          <a
             id="copy-rss-feed"
             class="rss-feed-badge"
+            href="https://anchor.fm/s/116db53dc/podcast/rss"
             aria-label="Copy RSS feed URL"
           >
             <img
@@ -128,7 +222,7 @@
               alt=""
               aria-hidden="true"
             />
-          </button>
+          </a>
         </div>
       </section>
 

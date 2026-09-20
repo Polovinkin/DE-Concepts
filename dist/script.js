@@ -31,7 +31,9 @@ const rssFeedButton = document.getElementById("copy-rss-feed");
 const podcastFeedUrl = "https://anchor.fm/s/116db53dc/podcast/rss";
 const podcastPageUrl = "https://podcasters.spotify.com/pod/show/polovinkin";
 
-async function copyRssFeedUrl() {
+async function copyRssFeedUrl(event) {
+  event.preventDefault();
+
   try {
     await navigator.clipboard.writeText(podcastFeedUrl);
     rssFeedButton.classList.add("is-copied");
