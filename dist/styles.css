@@ -154,7 +154,7 @@ h1 em {
 .hero-title-break-mobile { display: none; }
 
 .hero-copy > p:last-child {
-  max-width: 560px;
+  max-width: 620px;
   margin-bottom: 0;
   color: var(--muted);
   font-size: 1.08rem;
