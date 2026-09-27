@@ -1,6 +1,6 @@
 # Data Engineering Concepts — podcast website
 
-Static landing page for the Data Engineering Concepts podcast.
+Static landing page for the Data Engineering Concepts podcast - first purely educational podcast about field of DE in English!
 
 ## Local preview
 
