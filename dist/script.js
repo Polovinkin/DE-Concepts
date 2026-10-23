@@ -60,15 +60,14 @@ function getDescriptionText(description) {
     description,
     "text/html",
   );
+  // Сохраняем границы строк и абзацев при удалении HTML-разметки.
+  documentWithDescription.body
+    .querySelectorAll("br, hr, p, div, li, blockquote, h1, h2, h3, h4, h5, h6")
+    .forEach((element) => {
+      element.before(" ");
+      element.after(" ");
+    });
   return documentWithDescription.body.textContent.replace(/\s+/g, " ").trim();
-}
-
-function shortenDescription(description, maximumLength = 210) {
-  if (description.length <= maximumLength) {
-    return description;
-  }
-
-  return `${description.slice(0, maximumLength).trimEnd().replace(/[.,;:]$/, "")}…`;
 }
 
 function formatEpisodeDate(date) {
@@ -96,21 +95,19 @@ function createEpisodeCard(item) {
   const link = getElementText(item, "link");
   const publicationDate = getElementText(item, "pubDate");
   const duration = getElementText(item, "itunes:duration");
-  const description = shortenDescription(
-    getDescriptionText(getElementText(item, "description")),
-  );
+  const description = getDescriptionText(getElementText(item, "description"));
 
-  const card = document.createElement("a");
+  const card = document.createElement("article");
   card.className = "episode-card";
-  card.href = link;
-  card.target = "_blank";
-  card.rel = "noopener noreferrer";
 
   const metadata = document.createElement("p");
   metadata.className = "episode-meta";
 
-  const date = document.createElement("span");
+  const date = document.createElement("a");
   date.className = "episode-date";
+  date.href = link;
+  date.target = "_blank";
+  date.rel = "noopener noreferrer";
   date.textContent = formatEpisodeDate(publicationDate);
 
   const episodeDuration = document.createElement("span");
@@ -128,13 +125,8 @@ function createEpisodeCard(item) {
   const summary = document.createElement("p");
   summary.textContent = description;
 
-  const action = document.createElement("span");
-  action.className = "episode-action";
-  action.textContent = "Listen";
-  action.setAttribute("aria-hidden", "true");
-
   content.append(heading, summary);
-  card.append(metadata, content, action);
+  card.append(metadata, content);
 
   return card;
 }

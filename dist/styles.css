@@ -302,14 +302,14 @@ h1 em {
 .episode-card {
   padding: 18px 0;
   display: grid;
-  grid-template-columns: 135px minmax(0, 1fr) auto;
+  grid-template-columns: 135px minmax(0, 1fr);
   gap: 28px;
   align-items: start;
   border-bottom: 1px dashed var(--line);
 }
 
-.episode-card:hover .episode-content h3,
-.episode-card:focus-visible .episode-content h3 { color: var(--accent); }
+.episode-date:hover,
+.episode-date:focus-visible { color: var(--accent); }
 
 .episode-card:last-child { border-bottom: 0; }
 
@@ -344,22 +344,15 @@ h1 em {
   font-size: clamp(1.15rem, 2vw, 1.45rem);
   line-height: 1.15;
   letter-spacing: -0.025em;
-  transition: color 150ms ease;
 }
 
 .episode-content p {
   margin-bottom: 0;
   color: var(--muted);
-}
-
-.episode-action {
-  padding-top: 1px;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.episode-action::after {
-  content: " →";
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .episodes-status {
@@ -458,7 +451,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .episodes-section { padding: 28px 0 30px; }
   .episodes-heading { margin-bottom: 18px; }
   .episode-card {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
     gap: 8px 18px;
   }
   .episode-meta {
@@ -471,7 +464,6 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .episode-date,
   .episode-duration { white-space: nowrap; }
   .episode-content { grid-column: 1 / -1; grid-row: 2; }
-  .episode-action { grid-column: 2; grid-row: 1; }
 }
 
 @media (max-width: 560px) {
