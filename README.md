@@ -2,7 +2,13 @@
 
 Static landing page for the Data Engineering Concepts podcast - first purely educational podcast about field of DE in English!
 
-## Local preview
+## Local preview for dev
 
-Open `dist/index.html` directly in a browser or serve the directory with any static file server.
+
+Run in `Website Git` folder:
+```bash
+python3 -m http.server 8000 --bind localhost --directory dist
+```
+
+Open [http://localhost:8000](http://localhost:8000) in your browser.
 
