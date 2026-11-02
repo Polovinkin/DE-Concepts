@@ -29,7 +29,6 @@ document.fonts?.ready.then(fitMobileHeroTitle);
 const episodesList = document.getElementById("episodes-list");
 const rssFeedButton = document.getElementById("copy-rss-feed");
 const podcastFeedUrl = "https://anchor.fm/s/116db53dc/podcast/rss";
-const podcastPageUrl = "https://podcasters.spotify.com/pod/show/polovinkin";
 
 async function copyRssFeedUrl(event) {
   event.preventDefault();
@@ -134,22 +133,21 @@ function createEpisodeCard(item) {
 function showEpisodesFallback() {
   const message = document.createElement("p");
   message.className = "episodes-status";
-  message.append("Episodes are temporarily unavailable. ");
+  message.append(
+    "We couldn’t load the episode list from Spotify, where we host the podcast. This may be because Spotify is unavailable in your country...",
+    document.createElement("br"),
+    "You can listen on your preferred service using the buttons above, or try enabling a VPN! :)",
+  );
 
-  const link = document.createElement("a");
-  link.className = "episodes-fallback-link";
-  link.href = podcastPageUrl;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  link.textContent = "View them on Spotify";
-
-  message.append(link);
   episodesList.replaceChildren(message);
 }
 
 async function loadEpisodes() {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 12000);
+
   try {
-    const response = await fetch(podcastFeedUrl);
+    const response = await fetch(podcastFeedUrl, { signal: controller.signal });
 
     if (!response.ok) {
       throw new Error(`Podcast feed returned ${response.status}`);
@@ -173,6 +171,7 @@ async function loadEpisodes() {
     console.error("Could not load podcast episodes:", error);
     showEpisodesFallback();
   } finally {
+    window.clearTimeout(timeout);
     episodesList.setAttribute("aria-busy", "false");
   }
 }

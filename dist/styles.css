@@ -361,16 +361,6 @@ h1 em {
   color: var(--muted);
 }
 
-.episodes-fallback-link {
-  color: var(--accent);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.episodes-fallback-link:hover,
-.episodes-fallback-link:focus-visible { color: var(--ink); }
-
 footer {
   min-height: 68px;
   display: flex;
