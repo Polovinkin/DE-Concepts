@@ -439,26 +439,29 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .hero-title-break-mobile { display: initial; }
   .hero-title-break-desktop { display: none; }
   .info-section {
-    grid-template-columns: 32px minmax(0, 1fr);
-    column-gap: 8px;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 6px;
     row-gap: 9px;
     align-items: center;
-    padding: 24px 0;
+    padding: 14px 0;
   }
+  .info-section h2 { font-size: 20px; }
   .section-shape {
     align-self: center;
     justify-self: center;
     margin-top: 0;
+    font-size: 20px;
   }
   .section-shape-square,
   .section-shape-circle {
-    width: 20px;
-    height: 20px;
+    width: 1cap;
+    height: 1cap;
   }
+  .section-shape-circle { border-width: 2px; }
   .section-shape-triangle {
-    border-right-width: 11px;
-    border-bottom-width: 19px;
-    border-left-width: 11px;
+    border-right-width: 0.577cap;
+    border-bottom-width: 1cap;
+    border-left-width: 0.577cap;
   }
   .info-section > div { grid-column: 1 / -1; }
   .listen-section { padding: 18px 0 24px; }
