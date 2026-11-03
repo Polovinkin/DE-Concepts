@@ -401,8 +401,8 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .hero { padding: 18px 0 24px; grid-template-columns: minmax(0, 1fr); gap: 26px; }
   .hero-cover { width: min(54.4vw, 224px); margin-inline: auto; }
   .hero-copy > p:last-child { font-size: 1rem; }
-  .info-section > div p,
-  .episode-content p { font-size: 0.9375rem; }
+  .info-section > div p { font-size: 0.9375rem; }
+  .episode-content p { display: none; }
   h1 {
     font-size: clamp(1.4rem, 6.6vw, 2rem);
     /* Preserve the two explicit lines while the font scales to their width. */
@@ -462,22 +462,50 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     width: auto;
     height: 40px;
   }
-  .episodes-section { padding: 28px 0 30px; }
+  .episodes-section { padding: 28px 0 8px; }
   .episodes-heading { margin-bottom: 18px; }
+  .episodes-heading h2 { font-size: 24px; }
+  .episodes-list { border-top: 1px solid rgba(95, 85, 68, 0.18); }
   .episode-card {
+    padding: 16px 0;
     grid-template-columns: minmax(0, 1fr);
-    gap: 8px 18px;
+    gap: 6px;
+    border-bottom: 1px solid rgba(95, 85, 68, 0.18);
   }
   .episode-meta {
     grid-column: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    font-family: inherit;
+    font-weight: 400;
+    letter-spacing: normal;
+    color: var(--muted);
   }
   .episode-date,
-  .episode-duration { white-space: nowrap; }
+  .episode-duration {
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .episode-duration {
+    align-self: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    text-transform: none;
+  }
+  .episode-duration::before { content: "·"; margin-right: 6px; }
+  .episode-duration-suffix { display: none; }
   .episode-content { grid-column: 1 / -1; grid-row: 2; }
+  .episode-content h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: normal;
+  }
 }
 
 @media (max-width: 560px) {

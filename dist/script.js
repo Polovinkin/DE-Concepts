@@ -113,7 +113,11 @@ function createEpisodeCard(item) {
 
   const episodeDuration = document.createElement("span");
   episodeDuration.className = "episode-duration";
-  episodeDuration.textContent = `${formatEpisodeDuration(duration)} long`;
+  episodeDuration.textContent = formatEpisodeDuration(duration);
+  const durationSuffix = document.createElement("span");
+  durationSuffix.className = "episode-duration-suffix";
+  durationSuffix.textContent = " long";
+  episodeDuration.append(durationSuffix);
 
   metadata.append(date, episodeDuration);
 
