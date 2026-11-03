@@ -2,29 +2,31 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 const heroTitle = document.querySelector(".hero-copy h1");
 const mobileLayout = window.matchMedia("(max-width: 760px)");
-let heroTitleResizeFrame;
+let fittedTitleWidth;
 
-function fitMobileHeroTitle() {
-  window.cancelAnimationFrame(heroTitleResizeFrame);
-  heroTitleResizeFrame = window.requestAnimationFrame(() => {
-    if (!mobileLayout.matches) {
-      heroTitle.style.removeProperty("font-size");
-      return;
-    }
+function fitMobileHeroTitle(force = false) {
+  if (!mobileLayout.matches) {
+    heroTitle.style.removeProperty("font-size");
+    fittedTitleWidth = undefined;
+    return;
+  }
 
-    heroTitle.style.fontSize = "100px";
+  const width = heroTitle.clientWidth;
+  if (!width || (!force && width === fittedTitleWidth)) return;
 
-    const availableWidth = heroTitle.clientWidth - 1;
-    const requiredWidth = heroTitle.scrollWidth;
-    const fittedFontSize = Math.floor((availableWidth / requiredWidth) * 10000) / 100;
+  // Measure and fit synchronously, before the browser paints the result.
+  heroTitle.style.fontSize = "100px";
+  const textWidth = heroTitle.scrollWidth;
 
-    heroTitle.style.fontSize = `${fittedFontSize}px`;
-  });
+  if (textWidth > 0) {
+    heroTitle.style.fontSize = `${Math.floor(((width - 2) / textWidth) * 10000) / 100}px`;
+    fittedTitleWidth = width;
+  }
 }
 
 fitMobileHeroTitle();
-window.addEventListener("resize", fitMobileHeroTitle);
-document.fonts?.ready.then(fitMobileHeroTitle);
+window.addEventListener("resize", () => fitMobileHeroTitle());
+document.fonts?.ready.then(() => fitMobileHeroTitle(true));
 
 const episodesList = document.getElementById("episodes-list");
 const rssFeedButton = document.getElementById("copy-rss-feed");

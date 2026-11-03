@@ -11,7 +11,12 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* Keep mobile text sizing stable as browser controls and viewport change. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
 body {
   margin: 0;
@@ -67,8 +72,14 @@ header {
   font-weight: 700;
 }
 
+.header-author {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
 .brand-mark {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 5px;
 }
@@ -91,11 +102,16 @@ header {
   border-left: 8px solid transparent;
 }
 
+.support-section {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+
 .support-button {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   max-height: 63px;
   zoom: 0.5;
 }
@@ -363,28 +379,36 @@ h1 em {
 
 footer {
   min-height: 68px;
+  padding-block: 18px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
   color: var(--muted);
   font-size: 0.74rem;
 }
 
 footer p { margin-bottom: 0; }
-.legal { max-width: 560px; margin-left: auto; font-size: 0.62rem; line-height: 1.35; text-align: right; }
+.legal { max-width: 560px; font-size: 0.62rem; line-height: 1.35; text-align: center; }
 a:focus-visible,
 button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 @media (max-width: 760px) {
+  .header-author { display: none; }
   header, main, footer { width: min(calc(100% - 56px), var(--max)); }
-  .hero { padding: 18px 0 24px; grid-template-columns: 1fr; gap: 26px; }
-  .hero-cover { width: min(68vw, 280px); margin-inline: auto; }
+  .hero { padding: 18px 0 24px; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .hero-cover { width: min(54.4vw, 224px); margin-inline: auto; }
+  .hero-copy > p:last-child { font-size: 1rem; }
+  .info-section > div p,
+  .episode-content p { font-size: 0.9375rem; }
   h1 {
     font-size: clamp(1.4rem, 6.6vw, 2rem);
+    /* Preserve the two explicit lines while the font scales to their width. */
     white-space: nowrap;
+    overflow-wrap: normal;
   }
-  h1 em { white-space: nowrap; }
   .hero-title-break-mobile { display: initial; }
   .hero-title-break-desktop { display: none; }
   .info-section {
@@ -457,7 +481,10 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 }
 
 @media (max-width: 560px) {
-  .brand > span:last-child { display: none; }
+  .brand {
+    font-size: clamp(0.7rem, calc(5vw - 2px), 1.14rem);
+    white-space: nowrap;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
