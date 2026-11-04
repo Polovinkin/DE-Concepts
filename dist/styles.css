@@ -430,7 +430,6 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     margin-left: 64px;
     font-size: 13px;
     line-height: 1.15;
-    color: #8a806d;
   }
   header .brand { line-height: 1.1; }
   header, main, footer { width: min(calc(100% - 56px), var(--max)); }
