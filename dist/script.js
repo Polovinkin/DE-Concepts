@@ -152,6 +152,12 @@ function showEpisodesFallback() {
 }
 
 async function loadEpisodes() {
+  const loadingMessage = document.createElement("p");
+  loadingMessage.className = "episodes-status";
+  loadingMessage.textContent = "Loading episodes…";
+  episodesList.setAttribute("aria-busy", "true");
+  episodesList.replaceChildren(loadingMessage);
+
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), 12000);
 
