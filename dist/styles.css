@@ -168,6 +168,7 @@ h1 em {
 }
 
 .hero-title-break-mobile { display: none; }
+.hero-title-line { display: contents; }
 
 .hero-copy > p:last-child {
   max-width: 620px;
@@ -438,6 +439,11 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   }
   .hero-title-break-mobile { display: initial; }
   .hero-title-break-desktop { display: none; }
+  .hero-title-line {
+    display: inline-block;
+    width: max-content;
+    white-space: nowrap;
+  }
   .info-section {
     grid-template-columns: max-content minmax(0, 1fr);
     column-gap: 6px;

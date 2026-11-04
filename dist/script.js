@@ -1,6 +1,7 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const heroTitle = document.querySelector(".hero-copy h1");
+const heroTitleLines = [...heroTitle.querySelectorAll(".hero-title-line")];
 const mobileLayout = window.matchMedia("(max-width: 760px)");
 let fittedTitleWidth;
 
@@ -14,18 +15,20 @@ function fitMobileHeroTitle(force = false) {
   const width = heroTitle.clientWidth;
   if (!width || (!force && width === fittedTitleWidth)) return;
 
-  // Measure and fit synchronously, before the browser paints the result.
-  heroTitle.style.fontSize = "100px";
-  const textWidth = heroTitle.scrollWidth;
+  // Each line has its intrinsic text width, independent of the heading box.
+  const textWidth = Math.max(...heroTitleLines.map(line => line.getBoundingClientRect().width));
+  const currentSize = parseFloat(window.getComputedStyle(heroTitle).fontSize);
+  if (!Number.isFinite(textWidth) || textWidth <= 0 || !Number.isFinite(currentSize)) return;
 
-  if (textWidth > 0) {
-    heroTitle.style.fontSize = `${Math.floor(((width - 2) / textWidth) * 10000) / 100}px`;
-    fittedTitleWidth = width;
-  }
+  // Fit the longest line, with a small rounding margin and a size ceiling.
+  const fontSize = Math.min(currentSize * ((width - 2) / textWidth), width / 10);
+  heroTitle.style.fontSize = `${Math.floor(fontSize * 100) / 100}px`;
+  fittedTitleWidth = width;
 }
 
 fitMobileHeroTitle();
 window.addEventListener("resize", () => fitMobileHeroTitle());
+window.addEventListener("pageshow", () => fitMobileHeroTitle(true));
 document.fonts?.ready.then(() => fitMobileHeroTitle(true));
 
 const episodesList = document.getElementById("episodes-list");
