@@ -104,16 +104,24 @@ header {
 
 .support-section {
   padding: 24px 0;
+  display: flex;
+  justify-content: center;
   border-bottom: 1px solid var(--line);
 }
 
 .support-button {
-  flex: 0 0 auto;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  max-height: 63px;
-  zoom: 0.5;
+  gap: 4px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 6px;
+  background: #f3b246;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 13.5px;
+  white-space: nowrap;
 }
 
 footer a { transition: color 150ms ease; }
