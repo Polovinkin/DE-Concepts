@@ -77,6 +77,9 @@ header {
   white-space: nowrap;
 }
 
+.header-author-link { color: var(--accent); }
+.header-author-link:hover, .header-author-link:focus-visible { color: var(--ink); }
+
 .brand-mark {
   display: inline-flex;
   flex-shrink: 0;
